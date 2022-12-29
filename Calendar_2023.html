@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+ <!-- start of trial 
+<style type="text/css">
+    .trial {
+        color: red;
+    }
+</style>
+end of trial -->
+<script type="text/javascript">
+function preloadFunc()
+    {
+        //document.getElementById('cal').src = 'C:/Users/DMRC/Downloads/calendar print-images/0001.jpg';
+        let today = new Date();
+        let currentMonth = today.getMonth();
+        var imag, limag, imagt, limagt;
+        // limag = "C:/Users/DMRC/Downloads/calendar print-images/0001.jpg";
+        limag = "./calendar print-images/0001.jpg";
+      //  limagt = "./calendar print-images/1001.jpg"
+        var val = currentMonth + 1;
+
+       if (val <= 9 && val > 0) {
+        var res1 = '000' + val;
+      //  var res1t = '100' + val;
+       imag = limag.replace('0001', res1); 
+     //  imagt = limagt.replace('1001', res1t); 
+        }
+    else if (val > 9 && val <= 12) {
+        var res1 = '00' + val;
+       // var res1t = '10' + val;
+       imag = limag.replace('0001', res1); 
+      // imagt = limagt.replace('1001', res1t);
+        }
+       // document.getElementById("pt").innerHTML = today; 
+        document.getElementById('cal').src = imag;
+        //document.getElementById('cal1').src = imagt;
+
+        if (val == 1) {
+    	document.getElementById("previous").style.backgroundColor = '#f1f1f1';
+    	document.getElementById("next").style.backgroundColor = '#4CAF50';
+    }
+    else if (val > 1 && val <= 11) {
+    	document.getElementById("previous").style.backgroundColor = '#4CAF50';
+    	document.getElementById("next").style.backgroundColor = '#4CAF50';
+    }
+    else if (val >= 12) {
+    	document.getElementById("previous").style.backgroundColor = '#4CAF50';
+    	document.getElementById("next").style.backgroundColor = '#f1f1f1';
+    }
+    }
+   
+
+
+function previous() 
+{
+    var imag, limag, imagt, limagt;
+    limag = document.getElementById("cal").src;
+    //limagt = document.getElementById("cal1").src;
+
+
+    var pos = limag.search("00");
+    var purl = limag.slice(0,pos);
+    var res = limag.substr(pos,4);
+    var val = parseInt(res) - 1;
+
+    //var post = limagt.search("10");
+   // var purlt = limagt.slice(0,post);
+   // var rest = limagt.substr(post,4);
+    
+
+    if (val <= 9 && val > 0) {
+        var res1 = '000' + val;
+       imag = limag.replace(res, res1); 
+      //  var res1t = '100' + val;
+      // imagt = limagt.replace(rest, res1t); 
+        }
+    else if (val > 9 && val <= 12) {
+        var res1 = '00' + val;
+       imag = limag.replace(res, res1); 
+      // var res1t = '10' + val;
+      // imagt = limagt.replace(rest, res1t); 
+        }
+    else {
+        imag = limag;
+        //imagt = limagt;
+        }   
+
+ document.getElementById("cal").src = imag; 
+ //document.getElementById('cal1').src = imagt;
+
+ if (val == 1) {
+    	document.getElementById("previous").style.backgroundColor = '#f1f1f1';
+    	document.getElementById("next").style.backgroundColor = '#4CAF50';
+    }
+    else if (val > 1 && val <= 11) {
+    	document.getElementById("previous").style.backgroundColor = '#4CAF50';
+    	document.getElementById("next").style.backgroundColor = '#4CAF50';
+    }
+    else if (val >= 12) {
+    	document.getElementById("previous").style.backgroundColor = '#4CAF50';
+    	document.getElementById("next").style.backgroundColor = '#f1f1f1';
+    }
+ 
+}
+
+
+function next() 
+{  
+    var imag, limag;
+    limag = document.getElementById("cal").src;
+    //limagt = document.getElementById("cal1").src;
+    var pos = limag.search("00");
+    var purl = limag.slice(0,pos);
+    var res = limag.substr(pos,4);
+    var val = parseInt(res) + 1;
+
+    //var post = limagt.search("10");
+    //var purlt = limagt.slice(0,post);
+    //var rest = limagt.substr(post,4);
+
+    if (val <= 9) {
+        var res1 = '000' + val;
+       imag = limag.replace(res, res1); 
+      //  var res1t = '100' + val;
+       //imagt = limagt.replace(rest, res1t); 
+   }
+    else if (val > 9 && val <= 12) {
+        var res1 = '00' + val;
+       imag = limag.replace(res, res1); 
+      // var res1t = '10' + val;
+      // imagt = limagt.replace(rest, res1t);
+    }
+    else {
+        imag = limag;
+       // imagt = limagt;
+    }   
+   document.getElementById("cal").src = imag;
+   //document.getElementById('cal1').src = imagt;
+
+
+if (val == 1) {
+    	document.getElementById("previous").style.backgroundColor = '#f1f1f1';
+    	document.getElementById("next").style.backgroundColor = '#4CAF50';
+    }
+    else if (val > 1 && val <= 11) {
+    	document.getElementById("previous").style.backgroundColor = '#4CAF50';
+    	document.getElementById("next").style.backgroundColor = '#4CAF50';
+    }
+    else if (val >= 12) {
+    	document.getElementById("previous").style.backgroundColor = '#4CAF50';
+    	document.getElementById("next").style.backgroundColor = '#f1f1f1';
+    }
+ //document.getElementById("pt").innerHTML = limag; 
+ 
+}
+
+function monthwise(val) 
+{
+	var imag, limag;
+    limag = document.getElementById("cal").src;
+    //limagt = document.getElementById("cal1").src;
+    var pos = limag.search("00");
+    var purl = limag.slice(0,pos);
+    var res = limag.substr(pos,4);
+    //var val = parseInt(res) + 1;
+
+    //var post = limagt.search("10");
+    //var purlt = limagt.slice(0,post);
+    //var rest = limagt.substr(post,4);
+
+    if (val <= 9) {
+        var res1 = '000' + val;
+       imag = limag.replace(res, res1); 
+      //  var res1t = '100' + val;
+       //imagt = limagt.replace(rest, res1t); 
+   }
+    else if (val > 9 && val <= 12) {
+        var res1 = '00' + val;
+       imag = limag.replace(res, res1); 
+      // var res1t = '10' + val;
+      // imagt = limagt.replace(rest, res1t);
+    }
+    else {
+        imag = limag;
+       // imagt = limagt;
+    }   
+   document.getElementById("cal").src = imag;
+   //document.getElementById('cal1').src = imagt;
+
+
+if (val == 1) {
+    	document.getElementById("previous").style.backgroundColor = '#f1f1f1';
+    	document.getElementById("next").style.backgroundColor = '#4CAF50';
+    }
+    else if (val > 1 && val <= 11) {
+    	document.getElementById("previous").style.backgroundColor = '#4CAF50';
+    	document.getElementById("next").style.backgroundColor = '#4CAF50';
+    }
+    else if (val >= 12) {
+    	document.getElementById("previous").style.backgroundColor = '#4CAF50';
+    	document.getElementById("next").style.backgroundColor = '#f1f1f1';
+    }
+}
+
+</script>
+
+
+
+<style type="text/css">
+    .previous {
+ /* background-color: #f1f1f1; */
+ background-color: #4CAF50; 
+  color: black;
+  width: 40px;
+  height: 30px;
+}
+
+.next {
+  background-color: #4CAF50; 
+  color: white;
+   width: 40px;
+  height: 30px;
+}
+
+span {
+	cursor: pointer;
+	font-weight: bold;
+	padding: 5px;
+}
+span:hover {
+	background-color: #4CAF50; 
+	color: #ffffff;
+}
+
+#pt {
+	font-weight: bolder;
+	padding-left: 2%;
+	align-content: center;
+	align-self: center;
+	
+}
+a {
+	color: red;
+}
+
+
+
+</style>
+
+
+</head>
+<body onload="preloadFunc()">      
+    <table style="align-content: center; alignment-baseline: central; padding: 0; ">
+    	<thead>
+    	<tr><center>
+    		<nav style="background-color: #7CBB99; width: '150%'; "> |
+    			<span onclick="monthwise(1)">January</span> | 
+    			<span onclick="monthwise(2)">February</span> | 
+    			<span onclick="monthwise(3)">March</span> | 
+    			<span onclick="monthwise(4)">April</span> | 
+    			<span onclick="monthwise(5)">May</span> | 
+    			<span onclick="monthwise(6)">June</span> | 
+    			<span onclick="monthwise(7)">July</span> | 
+    			<span onclick="monthwise(8)">August</span> | 
+    			<span onclick="monthwise(9)">September</span> | 
+    			<span onclick="monthwise(10)">October</span> | 
+    			<span onclick="monthwise(11)">November</span> | 
+    			<span onclick="monthwise(12)">December</span> | 
+
+    		</nav></center>
+    	</tr></thead>
+        <tr>
+            <td>
+              <div style="position: fixed; left: 0; top: 5%;" >
+                     <button class="previous" id="previous" onclick="previous()">&#8249;&#8249;</button>
+              </div> 
+            </td>
+            <!-- <td width="40%" style="background-color: #E0F1F7;">
+                 <div><center>
+                   <img src="" id="cal1" width="100%" height="80%" /> </center>
+                </div>
+            </td> -->
+            <td>
+                 <div><center>
+                   <img src="" id="cal" width="60%" height="90%" /> </center>
+                </div>
+            </td>
+            <td>
+                <div style="position: fixed; top: 5%; right: 0;">
+                    <button class="next" id="next" onclick="next()">&#8250;&#8250;</button>
+                </div>
+            </td>
+        </tr>      
+    </table>
+
+<p id="pt"><a href="holidays 2023n.jpg" style="float:left; color: red" target="_blank" >National/Gazetted Holidays during the calendar year 2023</a>
+<a href="holidays 2023r.jpg" style="float:right; color: gray" target="_blank"  >Restricted Holidays during the calendar year 2023 &nbsp;&nbsp;</a>
+</p>
+ 
+<!--
+        <div class="form-inline">
+
+            <button class="previous round" id="previous" onclick="previous()">&#8249;</button>
+
+            <button class="next round" id="next" onclick="next()">&#8250;</button>
+        </div>
+        <br/>
+-->
+
+
+</body>
+</html>
